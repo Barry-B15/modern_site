@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
+/* Custom properties */
+
+:root {
+    --primary-color: #047aed;
+}
+
+
+/* Initial set up styling */
+
+* {
+    box-sizing: border-box;
+    /* box sizing allows us to add padding and margin inside the box and will not increase the box size */
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+h1,
+h2 {
+    font-weight: 300;
+    line-height: 1.2;
+    margin: 10px 0;
+}
+
+p {
+    margin: 10px 0;
+}
+
+img {
+    width: 100%;
+    /* 100% so img dont bust out of its container */
+}
+
+
+/* navbar style */
+
+.navbar {
+    background-color: var(--primary-color);
+    color: #fff;
+    height: 70px;
+}
+
+.navbar ul {
+    display: flex;
+}
+
+.navbar a {
+    color: #fff;
+    padding: 10px;
+    margin: 0 5px;
+}
+
+.navbar a:hover {
+    border-bottom: 2px #fff solid;
+}
+
+.navbar .flex {
+    justify-content: space-between;
+    /*we created this so we can use justify content: space btw here and center in the reusable class .flex, see below*/
+}
+
+
+/* Showcase styling */
+
+.showcase {
+    height: 400px;
+    background-color: var(--primary-color);
+    color: #fff;
+    position: relative;
+}
+
+.showcase h1 {
+    font-size: 40px;
+}
+
+.showcase p {
+    margin: 20px 0;
+}
+
+.showcase .grid {
+    overflow: visible;
+    grid-template-columns: 55% 45%;
+    /* make the text side a little wider, n increase the gap a liitle */
+    gap: 30px;
+}
+
+.showcase-form {
+    position: relative;
+    top: 60px;
+    height: 350px;
+    /* this height makes the form taller than the parent thus gives a scroll bar,we dont need that on our page, add overflow: visible to .showcase .grid to make the bottom of the form visible and fix the scrollbar */
+    width: 400px;
+    padding: 40px;
+    z-index: 100;
+    /*so its always on top*/
+}
+
+.showcase-form .form-control {
+    margin: 30px 0;
+}
+
+.showcase-form input[type='text'],
+.showcase-form input[type='email'] {
+    border: 0;
+    border-bottom: 1px solid #b4becb;
+    width: 100%;
+    padding: 3px;
+    font-size: 16px;
+}
+
+.showcase-form input:focus {
+    outline: none;
+}
+
+
+/* add a slant by use of psuedo classes */
+
+.showcase::before,
+.showcase::after {
+    content: '';
+    position: absolute;
+    /* showcase has a position relative so this must be absolute */
+    height: 100px;
+    bottom: -70px;
+    right: 0;
+    left: 0;
+    background: #fff;
+    transform: skewY(-3deg);
+    /* browser compatibility */
+    -webkit-transform: skewY(-3deg);
+    /*for Chrome, Firefox*/
+    -moz-transform: skewY(-3deg);
+    /*for Mozilla*/
+    -ms-transform: skewY(-3deg);
+    /*for Micorsoft explorer*/
+}
+
+
+/* Stats styling*/
+
+.stats {
+    padding-top: 100px;
+    /*push the class down, the slant is covering it. Our igrid is 2 colns, create a new for 3 colns below .grid*/
+}
+
+
+/* utilities styling */
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    overflow: auto;
+    /* h1 has a 10px marging top and thats having a space on top of our container, oveflow fixes that */
+    padding: 0 40px;
+}
+
+.card {
+    background-color: #fff;
+    color: #333;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin: 10px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 30px;
+    cursor: pointer;
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 1px #fff solid;
+}
+
+.btn:hover {
+    transform: scale(0.98);
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* 1st coln takes 2 fractions, 2nd coln takes 1fraction (can also be 75%, 25%)
+    to make even, we use 1fr 1fr or repeat(2, 1fr) */
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
