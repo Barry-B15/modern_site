@@ -60,6 +60,15 @@ pre {
 }
 
 
+/* bot field for netlify */
+
+.hidden {
+    visibility: hidden;
+    height: 0;
+    /*this makes sure the hidden field does not take up any space*/
+}
+
+
 /* navbar style */
 
 .navbar {
